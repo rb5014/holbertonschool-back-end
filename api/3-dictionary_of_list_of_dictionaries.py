@@ -24,9 +24,10 @@ if __name__ == "__main__":
     todos = json.loads(todos.read())
     employees = json.loads(employees.read())
 
+    res_dict = {}
     username = ""
     for employee in employees:
-        res_dict = {str(employee["id"]): []}
+        res_dict[str(employee["id"])] = []
         username = employee["username"]
         for todo in todos:
             if todo["userId"] == employee["id"]:
@@ -34,7 +35,7 @@ if __name__ == "__main__":
                 d["username"] = username
                 d["task"] = todo["title"]
                 d["completed"] = todo["completed"]
-                res_dict[str(id)].append(d)
+                res_dict[str(employee["id"])].append(d)
 
-    with open(sys.argv[1] + '.json', 'w') as json_file:
+    with open('todo_all_employees.json', 'w') as json_file:
         json_file.write(json.dumps(res_dict))
