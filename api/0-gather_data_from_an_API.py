@@ -2,9 +2,9 @@
 """Module to fetch data from url"""
 
 
-import urllib.request
 import json
 import sys
+import urllib.request
 
 
 if __name__ == "__main__":

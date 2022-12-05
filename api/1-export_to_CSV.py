@@ -2,10 +2,10 @@
 """export data in a csv file"""
 
 
-import urllib.request
-import json
 import csv
+import json
 import sys
+import urllib.request
 
 
 if __name__ == "__main__":
