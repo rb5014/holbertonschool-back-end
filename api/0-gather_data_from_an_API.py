@@ -6,38 +6,40 @@ import urllib.request
 import json
 import sys
 
-try:
-    id = int(sys.argv[1])
 
-except Exception:
-    exit
+if __name__ == "__main__":
 
-todos = urllib.request.urlopen(
-    "https://jsonplaceholder.typicode.com/todos")
-employees = urllib.request.urlopen(
-    "https://jsonplaceholder.typicode.com/users")
+    try:
+        id = int(sys.argv[1])
 
-todos = json.loads(todos.read())
-employees = json.loads(employees.read())
+    except Exception:
+        exit
 
+    todos = urllib.request.urlopen(
+        "https://jsonplaceholder.typicode.com/todos")
+    employees = urllib.request.urlopen(
+        "https://jsonplaceholder.typicode.com/users")
 
-name = ""
-nb_done = 0
-total_tasks = 0
-title_list = []
+    todos = json.loads(todos.read())
+    employees = json.loads(employees.read())
 
-for employee in employees:
-    if id == employee["id"]:
-        name = employee["name"]
+    name = ""
+    nb_done = 0
+    total_tasks = 0
+    title_list = []
 
-for todo in todos:
-    if todo["userId"] == id:
-        total_tasks += 1
-        if todo["completed"] is True:
-            nb_done += 1
-            title_list.append(todo["title"])
-print("Employee {} is done with tasks({}/{}):"
-      .format(name, nb_done, total_tasks))
+    for employee in employees:
+        if id == employee["id"]:
+            name = employee["name"]
 
-for title in title_list:
-    print("\t {}".format(title))
+    for todo in todos:
+        if todo["userId"] == id:
+            total_tasks += 1
+            if todo["completed"] is True:
+                nb_done += 1
+                title_list.append(todo["title"])
+    print("Employee {} is done with tasks({}/{}):"
+          .format(name, nb_done, total_tasks))
+
+    for title in title_list:
+        print("\t {}".format(title))

@@ -7,33 +7,36 @@ import json
 import csv
 import sys
 
-try:
-    id = int(sys.argv[1])
 
-except Exception:
-    exit
+if __name__ == "__main__":
 
-todos = urllib.request.urlopen(
-    "https://jsonplaceholder.typicode.com/todos?format=csv")
-employees = urllib.request.urlopen(
-    "https://jsonplaceholder.typicode.com/users?format=csv")
+    try:
+        id = int(sys.argv[1])
 
-todos = json.loads(todos.read())
-employees = json.loads(employees.read())
+    except Exception:
+        exit
 
-username = ""
-for employee in employees:
-    if employee["id"] == id:
-        username = employee["username"]
+    todos = urllib.request.urlopen(
+        "https://jsonplaceholder.typicode.com/todos?format=csv")
+    employees = urllib.request.urlopen(
+        "https://jsonplaceholder.typicode.com/users?format=csv")
 
-row_list = []
-for todo in todos:
-    if todo["userId"] == id:
-        fields = [id, username, todo["completed"], todo["title"]]
-        row_list.append(fields)
+    todos = json.loads(todos.read())
+    employees = json.loads(employees.read())
 
-with open(sys.argv[1] + '.csv', 'w') as csv_file:
-    writer = csv.writer(csv_file, delimiter=',', quotechar='"',
-                        quoting=csv.QUOTE_ALL)
-    for row in row_list:
-        writer.writerow(row)
+    username = ""
+    for employee in employees:
+        if employee["id"] == id:
+            username = employee["username"]
+
+    row_list = []
+    for todo in todos:
+        if todo["userId"] == id:
+            fields = [id, username, todo["completed"], todo["title"]]
+            row_list.append(fields)
+
+    with open(sys.argv[1] + '.csv', 'w') as csv_file:
+        writer = csv.writer(csv_file, delimiter=',', quotechar='"',
+                            quoting=csv.QUOTE_ALL)
+        for row in row_list:
+            writer.writerow(row)
