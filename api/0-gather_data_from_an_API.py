@@ -38,8 +38,9 @@ if __name__ == "__main__":
             if todo["completed"] is True:
                 nb_done += 1
                 title_list.append(todo["title"])
-    print("Employee {} is done with tasks({}/{}):"
-          .format(name, nb_done, total_tasks))
-
-    for title in title_list:
-        print("\t {}".format(title))
+    with open('student_output', 'w') as f:
+        first_line = "Employee {} is done with tasks({}/{}):".format(
+            name, nb_done, total_tasks)
+        f.write(first_line)
+        for title in title_list:
+            f.write("\n\t {}".format(title))
