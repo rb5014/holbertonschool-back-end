@@ -4,9 +4,9 @@
 
 import csv
 import json
+import requests
 import sys
 import urllib.request
-import requests
 
 if __name__ == "__main__":
 

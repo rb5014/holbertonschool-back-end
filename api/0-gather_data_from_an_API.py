@@ -39,8 +39,8 @@ if __name__ == "__main__":
                 nb_done += 1
                 title_list.append(todo["title"])
 
-        first_line = "Employee {} is done with tasks({}/{}):".format(
-            name, nb_done, total_tasks)
-        print(first_line)
-        for title in title_list:
-            print("\t {}".format(title))
+    first_line = "Employee {} is done with tasks({}/{}):".format(
+        name, nb_done, total_tasks)
+    print(first_line)
+    for title in title_list:
+        print("\t {}".format(title))
