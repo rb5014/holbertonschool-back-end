@@ -5,7 +5,7 @@
 import csv
 import json
 import sys
-import urllib.request
+import requests
 
 
 if __name__ == "__main__":
@@ -16,13 +16,13 @@ if __name__ == "__main__":
     except Exception:
         exit
 
-    todos = urllib.request.urlopen(
+    todos = requests.get(
         "https://jsonplaceholder.typicode.com/todos?format=csv")
-    employees = urllib.request.urlopen(
+    employees = requests.get(
         "https://jsonplaceholder.typicode.com/users?format=csv")
 
-    todos = json.loads(todos.read())
-    employees = json.loads(employees.read())
+    todos = todos.json()
+    employees = employees.json()
 
     username = ""
     for employee in employees:
