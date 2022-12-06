@@ -15,7 +15,7 @@ if __name__ == "__main__":
     except Exception:
         exit
 
-    todos = request.get(
+    todos = requests.get(
         "https://jsonplaceholder.typicode.com/todos?format=csv")
     employees = requests.get(
         "https://jsonplaceholder.typicode.com/users?format=csv")
