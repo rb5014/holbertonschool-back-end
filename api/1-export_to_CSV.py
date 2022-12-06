@@ -17,12 +17,12 @@ if __name__ == "__main__":
         exit
 
     todos = requests.get(
-        "https://jsonplaceholder.typicode.com/todos?format=csv")
+        "https://jsonplaceholder.typicode.com/todos")
     employees = requests.get(
-        "https://jsonplaceholder.typicode.com/users?format=csv")
+        "https://jsonplaceholder.typicode.com/users")
 
-    todos = json.loads(todos.read())
-    employees = json.loads(employees.read())
+    todos = todos.json()
+    employees = employees.json()
 
     username = ""
     for employee in employees:
