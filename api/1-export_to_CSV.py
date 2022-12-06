@@ -35,7 +35,7 @@ if __name__ == "__main__":
             fields = [id, username, todo["completed"], todo["title"]]
             row_list.append(fields)
 
-    with open(sys.argv[1] + '.csv', 'w') as csv_file:
+    with open(sys.argv[1] + '.csv', 'w', encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file, delimiter=',', quotechar='"',
                             quoting=csv.QUOTE_ALL)
         for row in row_list:
