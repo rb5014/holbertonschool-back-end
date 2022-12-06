@@ -2,10 +2,9 @@
 """export data in a json file"""
 
 
-import csv
 import json
-import sys
 import requests
+import sys
 
 
 if __name__ == "__main__":

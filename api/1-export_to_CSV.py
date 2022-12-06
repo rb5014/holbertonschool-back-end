@@ -3,10 +3,8 @@
 
 
 import csv
-import json
 import requests
 import sys
-import urllib.request
 
 if __name__ == "__main__":
 
